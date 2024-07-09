@@ -32,7 +32,9 @@ makeProject.currentProject.push(h,i)
 let renderTasks=(function(){
 
     let printList=function(){
-        document.querySelector('#container')
+       let container= document.querySelector('#container')
+       while( container.hasChildNodes() ){
+        container.removeChild(container.lastChild);} 
         let array=makeProject.currentProject;
         for(let j=0;j<array.length;j++){
             const content=document.createElement('div')
