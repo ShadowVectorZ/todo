@@ -1,0 +1,28 @@
+*{
+    border:1px solid black
+}
+html,body{
+    margin:0px;
+    height:max(606px,100%); 
+    width:max(527px,100%);
+    box-sizing:border-box
+}
+
+#container{
+    height:100%;
+    display:flex;
+    width:100%
+    }
+
+#projects{
+    height:100%;
+    width:40%;
+    
+    
+    }
+
+#tasks{
+    height:100%;
+    width:60%;
+
+}
