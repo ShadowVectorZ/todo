@@ -32,15 +32,15 @@ makeProject.currentProject.push(h,i)
 let renderTasks=(function(){
 
     let printList=function(){
-       let container= document.querySelector('#container')
-       while( container.hasChildNodes() ){
-        container.removeChild(container.lastChild);} 
+       let tasks= document.querySelector('#tasks')
+       while( tasks.hasChildNodes() ){
+        tasks.removeChild(tasks.lastChild);} 
         let array=makeProject.currentProject;
         for(let j=0;j<array.length;j++){
-            const content=document.createElement('div')
-            content.classList.add('content')
-            content.textContent=`${makeProject.currentProject[j].title}`
-            container.appendChild(content)
+            const task=document.createElement('div')
+            task.classList.add('task')
+            task.textContent=`${makeProject.currentProject[j].title}`
+            tasks.appendChild(tasl)
         }
     }
 
