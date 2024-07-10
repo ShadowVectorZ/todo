@@ -15,8 +15,8 @@ function makeNewProject(title){
     return {title,newArray}
 }
 
-let h=makeNewTodo('wash clothes','i','j','k')
-let i=makeNewTodo('do dishes','i','j','k')
+let h=makeNewTodo('wash clothes','wash all the dishes in sink before guests arrive','12/7','urgent')
+let i=makeNewTodo('do dishes',"do everyone's laundry",'12/24','not urgent')
 
 
 function addTodoToProject(title,description,dueDate,priority){
@@ -72,6 +72,10 @@ let renderTasks=(function(){
             const task=document.createElement('button')
             task.classList.add('task')
             task.textContent=`${projects.currentProject[j].title}`
+            const descrip=document.createElement('div')
+            descrip.classList.add('descrip')
+            descrip.textContent=`${projects.currentProject[j].description}`
+            task.appendChild(descrip)
             tasks.appendChild(task)
         }
     }
