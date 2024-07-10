@@ -7,40 +7,67 @@ function makeNewTodo(title,description,dueDate,priority){
     return{title,description,dueDate,priority}
 }
 
-let h=makeNewTodo('h','i','j','k')
-let i=makeNewTodo('h','i','j','k')
+
+function makeNewProject(title){
+    title=title
+    newArray=[]
+
+    return {title,newArray}
+}
+
+let h=makeNewTodo('wash clothes','i','j','k')
+let i=makeNewTodo('do dishes','i','j','k')
 
 
 function addTodoToProject(title,description,dueDate,priority){
     let newTodo=makeNewTodo(title,description,dueDate,priority)
-    makeProject.currentProject.push(newTodo)
+    projects.currentProject.push(newTodo)
 }
 
-let makeProject=(function(project){
-    let defaultProject=[]
-    let currentProject=defaultProject
-    let makeNewProject=function(){
-         project=[]
+let projects=(function(){
+    let allProjects=[]
+    function addNewProject(title){
+        let newProject=makeNewProject(title)
+        allProjects.push(newProject)
     }
-
-   
-    return{defaultProject,currentProject,project,makeNewProject,}
+    let defaultProject=makeNewProject('default project')
+    allProjects.push(defaultProject)
+    let currentProject=defaultProject.newArray
+    return{allProjects,defaultProject,currentProject,addNewProject}
 })()
 
-makeProject.currentProject.push(h,i)
+projects.currentProject.push(h,i)
+
+
+let renderProjects=(function(){
+    let printProjects=function(){
+        let projectDiv=document.querySelector('#projects')
+        while(projectDiv.hasChildNodes()){
+            projectDiv.removeChild(projectDiv.lastChild);}
+            let array=projects.allProjects;
+            for(let i=0;i<array.length;i++){
+                const project=document.createElement('div')
+                project.classList.add('project')
+                project.textContent=`${projects.allProjects[i].title}`
+                projectDiv.appendChild(project)
+            }
+    }
+    return{printProjects}
+})()
+
+renderProjects.printProjects()
 
 let renderTasks=(function(){
-
     let printList=function(){
        let tasks= document.querySelector('#tasks')
        while( tasks.hasChildNodes() ){
         tasks.removeChild(tasks.lastChild);} 
-        let array=makeProject.currentProject;
+        let array=projects.currentProject;
         for(let j=0;j<array.length;j++){
             const task=document.createElement('div')
             task.classList.add('task')
-            task.textContent=`${makeProject.currentProject[j].title}`
-            tasks.appendChild(tasl)
+            task.textContent=`${projects.currentProject[j].title}`
+            tasks.appendChild(task)
         }
     }
 
@@ -48,3 +75,5 @@ let renderTasks=(function(){
     return{printList,}
 
 })()
+
+renderTasks.printList()
