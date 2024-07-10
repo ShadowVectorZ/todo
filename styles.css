@@ -1,6 +1,8 @@
-*{
+/* *{
     border:1px solid black
-}
+} */
+
+
 html,body{
     margin:0px;
     height:max(606px,100%); 
@@ -14,11 +16,17 @@ html,body{
     width:100%
     }
 
+
+#projectSide{
+    height:100%;
+    width:40%
+}
 #projects{
     height:100%;
-    width:40%;
+    width:100%;
     display:flex;
     flex-wrap:wrap;
+    align-items:center;
     flex-direction:column;
     gap:10px
     }
@@ -27,7 +35,7 @@ html,body{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    width:100%;
+    width:80%;
     height:20px
 }
 
@@ -37,9 +45,28 @@ html,body{
 
 
 
+#todoSide{
 
+    height:100%;
+    width:60%
+
+}
 #tasks{
     height:100%;
-    width:60%;
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction:column;
+    gap:10px
 
+}
+
+.task{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    width:100%;
+    height:30px;
+    background-color:white
 }
