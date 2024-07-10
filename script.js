@@ -69,7 +69,7 @@ let renderTasks=(function(){
         tasks.removeChild(tasks.lastChild);} 
         let array=projects.currentProject;
         for(let j=0;j<array.length;j++){
-            const task=document.createElement('div')
+            const task=document.createElement('button')
             task.classList.add('task')
             task.textContent=`${projects.currentProject[j].title}`
             tasks.appendChild(task)
