@@ -50,6 +50,10 @@ let renderProjects=(function(){
                 const project=document.createElement('button')
                 project.classList.add('project')
                 project.textContent=`${projects.allProjects[i].title}`
+                project.addEventListener('click',()=>{
+                    projects.currentProject=projects.allProjects[i].newArray;
+                    renderTasks.printList()
+                })
                 projectDiv.appendChild(project)
             }
     }
