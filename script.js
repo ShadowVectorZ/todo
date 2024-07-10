@@ -31,9 +31,10 @@ let projects=(function(){
         allProjects.push(newProject)
     }
     let defaultProject=makeNewProject('default project')
-    allProjects.push(defaultProject)
+    let secondaryProject=makeNewProject('secondary project')
+    allProjects.push(defaultProject,secondaryProject)
     let currentProject=defaultProject.newArray
-    return{allProjects,defaultProject,currentProject,addNewProject}
+    return{allProjects,defaultProject,secondaryProject, currentProject,addNewProject}
 })()
 
 projects.currentProject.push(h,i)
@@ -46,7 +47,7 @@ let renderProjects=(function(){
             projectDiv.removeChild(projectDiv.lastChild);}
             let array=projects.allProjects;
             for(let i=0;i<array.length;i++){
-                const project=document.createElement('div')
+                const project=document.createElement('button')
                 project.classList.add('project')
                 project.textContent=`${projects.allProjects[i].title}`
                 projectDiv.appendChild(project)
