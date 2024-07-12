@@ -14,6 +14,48 @@
         </div>
         <div id="todoSide">
             <h1>Todos</h1>
+            <dialog class="modal" id="todo-dialog">
+                <form id="todoForm" method="dialog">
+                    <p>
+                        <label for="todo-title">
+                            Title:
+                            <input type="text" id='todo-title' required/>
+                        </label>
+                    </p>
+                    <p>
+                        <label for="todo-description">
+                            Description:
+                            <input type="text" id='todo-description' required/>
+                        </label>
+                    </p>
+                    <p>
+                        <label for="todo-date">
+                            Due Date:
+                            <input type="text" id='todo-date' required/>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            Priority Level
+                            <select>
+                                <option>Level 1</option>
+                                <option>Level 2</option>
+                                <option>Level 3</option>
+                                <option>Level 4</option>
+                            </select>
+                        </label>
+                    </p>
+                    <div>
+                        <input type="submit" class="confirm" value="Confirm"/>
+                        <input type="submit" class="cancel" value="Cancel" formnovalidate/>
+                    </div>
+                </form>
+               
+            </dialog>
+
+            <button id="new-todo">Add new Todo</button>
+
+
             <div id='tasks'></div>
         </div>
     </div>
