@@ -71,11 +71,21 @@ let renderTasks=(function(){
         for(let j=0;j<array.length;j++){
             const task=document.createElement('button')
             task.classList.add('task')
-            task.textContent=`${projects.currentProject[j].title}`
+            const taskHeader=document.createElement('div')
+            taskHeader.classList.add('taskHeader')
+                taskHeader.textContent=`${projects.currentProject[j].title}`
+            task.appendChild(taskHeader)
             const descrip=document.createElement('div')
-            descrip.classList.add('descrip')
-            descrip.textContent=`${projects.currentProject[j].description}`
+                descrip.classList.add('descrip')
+                descrip.textContent=`${projects.currentProject[j].description}`
             task.appendChild(descrip)
+            const delBut=document.createElement('button')
+                delBut.classList.add('delete')
+                delBut.textContent='delete'
+                delBut.addEventListener('click',()=>{
+                    task.remove()
+                })
+            taskHeader.appendChild(delBut)
             tasks.appendChild(task)
         }
     }
