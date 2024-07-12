@@ -10,6 +10,25 @@
     <div id="container">
         <div id="projectSide">
             <h1>Projects</h1>
+            <dialog class="modal" id="project-dialog">
+                <form id="projectForm" method="dialog">
+                    <p>
+                        <label for="project-title">
+                            Title:
+                            <input type="text" id='project-title' required/>
+                        </label>
+                    </p>
+                    
+                    <div>
+                        <input type="submit" class="confirm" value="Confirm"/>
+                        <input type="submit" class="cancel" value="Cancel" formnovalidate/>
+                    </div>
+                </form>
+               
+            </dialog>
+
+            <button id="new-project">Add new Project</button>
+
             <div id="projects"></div>
         </div>
         <div id="todoSide">
