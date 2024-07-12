@@ -57,13 +57,38 @@ let renderProjects=(function(){
                 projectDiv.appendChild(project)
             }
     }
-    return{printProjects}
-})()
 
+    let updateProjectDom=function(){
+        projectDialog.showModal()
+        projectForm.addEventListener('submit',(event)=>{
+            event.preventDefault()
+            let title=document.querySelector('#project-title').value
+            if (title===''||title===undefined||title===null){
+                projectForm.reset()
+                projectDialog.close()
+            }
+            else{
+                projects.addNewProject(title)
+                printProjects()
+                projectForm.reset()
+                projectDialog.close()
+            }
+        })
+
+
+    }
+    return{printProjects, updateProjectDom}
+})()
 renderProjects.printProjects()
 
-
-
+const projectDialog=document.querySelector('#project-dialog')
+const addProjectButton=document.querySelector('#new-project')
+addProjectButton.addEventListener('click',renderProjects.updateProjectDom)
+const projectForm=document.querySelector('#projectForm')
+const cancel = document.querySelector(".cancel");
+cancel.addEventListener("click", () => {
+    projectDialog.close();
+});
 
 
 let renderTasks=(function(){
@@ -93,7 +118,6 @@ let renderTasks=(function(){
             tasks.appendChild(task)
         }
     }
-
     function updateTodoDom(){
         todoDialog.showModal()
         todoForm.addEventListener('submit',(event)=>{
@@ -107,17 +131,14 @@ let renderTasks=(function(){
                 todoDialog.close()
             }
             else{
-            addTodoToProject(title,description,dueDate,priority)
-            printList()
-            todoForm.reset()
-            todoDialog.close()
-                }
+                addTodoToProject(title,description,dueDate,priority)
+                printList()
+                todoForm.reset()
+                todoDialog.close()
+            }
         })
     }
-
-
     return{printList, updateTodoDom}
-
 })()
 
 renderTasks.printList()
@@ -126,7 +147,7 @@ const todoDialog=document.querySelector('#todo-dialog')
 const addTodoButton=document.querySelector('#new-todo')
 addTodoButton.addEventListener('click',renderTasks.updateTodoDom)
 const todoForm=document.querySelector('#todoForm')
-const cancel = document.querySelector(".cancel");
-cancel.addEventListener("click", () => {
-    todoDialog.close();
-});
+// const cancel = document.querySelector(".cancel");
+// cancel.addEventListener("click", () => {
+//     todoDialog.close();
+// });
