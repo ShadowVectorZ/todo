@@ -3,8 +3,19 @@ function makeNewTodo(title,description,dueDate,priority){
      description=description
     dueDate=dueDate
     priority=priority
-
-    return{title,description,dueDate,priority}
+    let status='incomplete'
+    let changeStatus=function(){
+        if (status==='incomplete'){
+            status='complete'
+        }
+        else if(status==='complete'){
+            status='incomplete'
+        }
+    }
+    let showStatus=function(){
+        return status
+    }
+    return{title,description,dueDate,priority,showStatus,changeStatus}
 }
 
 
@@ -104,10 +115,25 @@ let renderTasks=(function(){
             taskHeader.classList.add('taskHeader')
                 taskHeader.textContent=`${projects.currentProject[j].title}`
             task.appendChild(taskHeader)
+
             const descrip=document.createElement('div')
                 descrip.classList.add('descrip')
                 descrip.textContent=`${projects.currentProject[j].description}`
             task.appendChild(descrip)
+
+            let statusButton=document.createElement('button')
+                statusButton.classList.add('status-button')
+                statusButton.textContent=`${projects.currentProject[j].showStatus()}`
+                statusButton.addEventListener('click', ()=>{
+                    projects.currentProject[j].changeStatus()
+                    renderTasks.printList()
+                });
+                if(statusButton.textContent==='complete'){
+                    statusButton.style.backgroundColor='green'
+                    statusButton.style.color='white'}
+                else(statusButton.style.backgroundColor='red')
+            taskHeader.appendChild(statusButton)
+
             const delBut=document.createElement('button')
                 delBut.classList.add('delete')
                 delBut.textContent='delete'
