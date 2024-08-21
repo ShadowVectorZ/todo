@@ -77,22 +77,14 @@ let renderProjects=(function(){
         projectForm.reset()
         projectDialog.close()
         })
-
         projectForm.addEventListener('submit',(event)=>{
             event.preventDefault()
             let title=document.querySelector('#project-title').value
-
-               
-            
-            
                 projects.addNewProject(title)
                 printProjects()
                 projectForm.reset()
                 projectDialog.close()
-            
         })
-
-
     }
     return{printProjects, updateProjectDom}
 })()
