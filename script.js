@@ -40,7 +40,8 @@ let projects=(function(){
     let allProjects=[]
     function addNewProject(title){
         let newProject=makeNewProject(title)
-        allProjects.push(newProject)
+        if (!(title===''||title===null||title===undefined)){
+        allProjects.push(newProject)}
     }
     let defaultProject=makeNewProject('default project')
     let secondaryProject=makeNewProject('secondary project')
@@ -72,19 +73,23 @@ let renderProjects=(function(){
 
     let updateProjectDom=function(){
         projectDialog.showModal()
+        cancelProject.addEventListener('click',()=>{
+        projectForm.reset()
+        projectDialog.close()
+        })
+
         projectForm.addEventListener('submit',(event)=>{
             event.preventDefault()
             let title=document.querySelector('#project-title').value
-            if (title===''||title===undefined||title===null){
-                projectForm.reset()
-                projectDialog.close()
-            }
-            else{
+
+               
+            
+            
                 projects.addNewProject(title)
                 printProjects()
                 projectForm.reset()
                 projectDialog.close()
-            }
+            
         })
 
 
