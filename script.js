@@ -32,7 +32,8 @@ let i=makeNewTodo('do dishes',"do everyone's laundry",'12/24','not urgent')
 
 function addTodoToProject(title,description,dueDate,priority){
     let newTodo=makeNewTodo(title,description,dueDate,priority)
-    projects.currentProject.push(newTodo)
+    if (!(title===''||title===null||title===undefined)){
+    projects.currentProject.push(newTodo)}
 }
 
 let projects=(function(){
@@ -96,10 +97,8 @@ const projectDialog=document.querySelector('#project-dialog')
 const addProjectButton=document.querySelector('#new-project')
 addProjectButton.addEventListener('click',renderProjects.updateProjectDom)
 const projectForm=document.querySelector('#projectForm')
-const cancel = document.querySelector(".cancel");
-cancel.addEventListener("click", () => {
-    projectDialog.close();
-});
+const cancelProject = document.querySelector(".cancel");
+
 
 
 let renderTasks=(function(){
@@ -146,22 +145,23 @@ let renderTasks=(function(){
     }
     function updateTodoDom(){
         todoDialog.showModal()
+        cancelTask.addEventListener('click',()=>{
+            todoForm.reset()
+            todoDialog.close()
+        })
+        
         todoForm.addEventListener('submit',(event)=>{
             event.preventDefault()
             let title=document.querySelector('#todo-title').value
             let description=document.querySelector('#todo-description').value
             let dueDate=document.querySelector('#todo-date').value
-            let priority=document.querySelector('select').value
-            if (dueDate===''||dueDate===undefined||dueDate===null){
-                todoForm.reset()
-                todoDialog.close()
-            }
-            else{
-                addTodoToProject(title,description,dueDate,priority)
-                printList()
-                todoForm.reset()
-                todoDialog.close()
-            }
+            let priority=document.querySelector('select').value   
+            addTodoToProject(title,description,dueDate,priority)
+            todoForm.reset()
+            todoDialog.close()
+            printList()
+            
+            
         })
     }
     return{printList, updateTodoDom}
@@ -173,7 +173,5 @@ const todoDialog=document.querySelector('#todo-dialog')
 const addTodoButton=document.querySelector('#new-todo')
 addTodoButton.addEventListener('click',renderTasks.updateTodoDom)
 const todoForm=document.querySelector('#todoForm')
-// const cancel = document.querySelector(".cancel");
-// cancel.addEventListener("click", () => {
-//     todoDialog.close();
-// });
+const cancelTask=document.querySelector('#cancelTask')
+const confirmTask=document.querySelector('#confirmTask')
