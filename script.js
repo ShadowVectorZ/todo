@@ -78,7 +78,6 @@ let renderProjects=(function(){
 
                 const delButton=document.createElement('button')
                 delButton.classList.add('delete')
-                delButton.textContent='delete'
                 delButton.addEventListener('click',()=>{
                     projects.deleteProject([i])
                 })
@@ -148,7 +147,6 @@ let renderTasks=(function(){
 
             const delBut=document.createElement('button')
                 delBut.classList.add('delete')
-                delBut.textContent='delete'
                 delBut.addEventListener('click',()=>{
                     projects.deleteTask([j])
                 })
