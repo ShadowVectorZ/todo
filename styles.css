@@ -44,6 +44,12 @@ html,body{
 }
 
 
+#new-todo,#new-project{
+    border-radius:25px;
+    height:30px;
+    width:30px;
+}
+
 
 #todoSide{
 
@@ -51,6 +57,17 @@ html,body{
     width:60%
 
 }
+
+.delete{
+    border-radius:25px;
+    height:100%;
+    width:30px;
+    font-size:100%;
+    background:url('./images/delete.svg');
+    background-color:lightgrey
+}
+
+
 
 
 
