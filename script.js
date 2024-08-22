@@ -47,13 +47,15 @@ let projects=(function(){
     let secondaryProject=makeNewProject('secondary project')
     allProjects.push(defaultProject,secondaryProject)
     let currentProject=defaultProject.newArray
+    function deleteProject(j){
+        allProjects.splice(j,1)
+        renderProjects.printProjects()
+    }
     function deleteTask(j){
-        
             currentProject.splice(j,1)
             renderTasks.printList()
-        
     }
-    return{allProjects,defaultProject,secondaryProject, currentProject,addNewProject,deleteTask}
+    return{allProjects,defaultProject,secondaryProject, currentProject,addNewProject,deleteTask,deleteProject}
 })()
 
 projects.currentProject.push(h,i)
@@ -73,6 +75,14 @@ let renderProjects=(function(){
                     projects.currentProject=projects.allProjects[i].newArray;
                     renderTasks.printList()
                 })
+
+                const delButton=document.createElement('button')
+                delButton.classList.add('delete')
+                delButton.textContent='delete'
+                delButton.addEventListener('click',()=>{
+                    projects.deleteProject([i])
+                })
+                project.appendChild(delButton)
                 projectDiv.appendChild(project)
             }
     }
