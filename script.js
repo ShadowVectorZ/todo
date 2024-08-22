@@ -47,7 +47,13 @@ let projects=(function(){
     let secondaryProject=makeNewProject('secondary project')
     allProjects.push(defaultProject,secondaryProject)
     let currentProject=defaultProject.newArray
-    return{allProjects,defaultProject,secondaryProject, currentProject,addNewProject}
+    function deleteTask(j){
+        
+            currentProject.splice(j,1)
+            renderTasks.printList()
+        
+    }
+    return{allProjects,defaultProject,secondaryProject, currentProject,addNewProject,deleteTask}
 })()
 
 projects.currentProject.push(h,i)
@@ -134,7 +140,7 @@ let renderTasks=(function(){
                 delBut.classList.add('delete')
                 delBut.textContent='delete'
                 delBut.addEventListener('click',()=>{
-                    task.remove()
+                    projects.deleteTask([j])
                 })
             taskHeader.appendChild(delBut)
             tasks.appendChild(task)
