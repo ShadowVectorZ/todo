@@ -7,13 +7,14 @@
 #container{
     height:100%;
     display:flex;
+    
     width:100%
     }
 
 
 #projectSide{
     height:100%;
-    width:40%
+    width:min(300px,50%)
 }
 #projects{
     height:100%;
@@ -47,7 +48,7 @@
 
 #todoSide{
     height:100%;
-    width:60%
+    width:max(300px,80%)
 
 }
 
