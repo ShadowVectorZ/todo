@@ -143,7 +143,12 @@ let renderTasks=(function(){
                     statusButton.style.backgroundColor='green'
                     statusButton.style.color='white'}
                 else(statusButton.style.backgroundColor='red')
-            taskHeader.appendChild(statusButton)
+            task.appendChild(statusButton)
+
+            const priorityDiv=document.createElement('div')
+            priorityDiv.classList.add('priority')
+            priorityDiv.textContent=`${projects.currentProject[j].priority}`
+            taskHeader.appendChild(priorityDiv)
 
             const delBut=document.createElement('button')
                 delBut.classList.add('delete')
