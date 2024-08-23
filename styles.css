@@ -3,12 +3,6 @@
 } */
 
 
-html,body{
-    margin:0px;
-    height:max(606px,100%); 
-    width:max(527px,100%);
-    box-sizing:border-box
-}
 
 #container{
     height:100%;
@@ -33,7 +27,7 @@ html,body{
 
 .project{
     display:flex;
-    justify-content:center;
+    justify-content:space-around;
     flex-wrap:wrap;
     width:80%;
     height:20px
@@ -52,7 +46,6 @@ html,body{
 
 
 #todoSide{
-
     height:100%;
     width:60%
 
@@ -67,7 +60,9 @@ html,body{
     background-color:lightgrey
 }
 
-
+.delete:hover{
+    background-color:palevioletred
+}
 
 
 
@@ -78,7 +73,6 @@ html,body{
     flex-wrap:wrap;
     flex-direction:column;
     gap:10px
-
 }
 
 .task{
