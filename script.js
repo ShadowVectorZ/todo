@@ -26,8 +26,8 @@ function makeNewProject(title){
     return {title,newArray}
 }
 
-let h=makeNewTodo('wash clothes','wash all the dishes in sink before guests arrive','12/7','urgent')
-let i=makeNewTodo('do dishes',"do everyone's laundry",'12/24','not urgent')
+let h=makeNewTodo('wash clothes','wash all the dishes in sink before guests arrive','12/7','Level 1')
+let i=makeNewTodo('do dishes',"do everyone's laundry",'12/24','Level 4')
 
 
 function addTodoToProject(title,description,dueDate,priority){
@@ -146,10 +146,21 @@ let renderTasks=(function(){
                 descrip.textContent=`${projects.currentProject[j].description}`
             task.appendChild(descrip)
 
-            const priorityDiv=document.createElement('div')
-            priorityDiv.classList.add('priority')
-            priorityDiv.textContent=`${projects.currentProject[j].priority}`
-            taskHeader.appendChild(priorityDiv)
+            if (projects.currentProject[j].priority==='Level 1'){
+                task.style.boxShadow='4px 4px 0  green'
+            }
+
+            else if(projects.currentProject[j].priority==='Level 2'){
+                task.style.boxShadow='4px 4px 0  gold'
+            }
+
+            else if(projects.currentProject[j].priority==='Level 3'){
+                task.style.boxShadow='4px 4px 0  orange'
+            }
+
+            else if(projects.currentProject[j].priority==='Level 4'){
+                task.style.boxShadow='4px 4px 0  red'
+            }
 
             const delBut=document.createElement('button')
                 delBut.classList.add('delete')
