@@ -124,26 +124,27 @@ let renderTasks=(function(){
             task.classList.add('task')
             const taskHeader=document.createElement('div')
             taskHeader.classList.add('taskHeader')
-                taskHeader.textContent=`${projects.currentProject[j].title}`
             task.appendChild(taskHeader)
-
-            const descrip=document.createElement('div')
-                descrip.classList.add('descrip')
-                descrip.textContent=`${projects.currentProject[j].description}`
-            task.appendChild(descrip)
-
             let statusButton=document.createElement('button')
                 statusButton.classList.add('status-button')
-                statusButton.textContent=`${projects.currentProject[j].showStatus()}`
+                statusButton.textContent=``
                 statusButton.addEventListener('click', ()=>{
                     projects.currentProject[j].changeStatus()
                     renderTasks.printList()
                 });
-                if(statusButton.textContent==='complete'){
+                if(projects.currentProject[j].showStatus()==='complete'){
                     statusButton.style.backgroundColor='green'
                     statusButton.style.color='white'}
-                else(statusButton.style.backgroundColor='red')
-            task.appendChild(statusButton)
+                else(statusButton.style.backgroundColor='white')
+            taskHeader.appendChild(statusButton)
+            const titleDiv=document.createElement('div')
+                titleDiv.classList.add('title-div')
+                titleDiv.textContent=`${projects.currentProject[j].title}`
+            taskHeader.appendChild(titleDiv)
+            const descrip=document.createElement('div')
+                descrip.classList.add('descrip')
+                descrip.textContent=`${projects.currentProject[j].description}`
+            task.appendChild(descrip)
 
             const priorityDiv=document.createElement('div')
             priorityDiv.classList.add('priority')
@@ -152,6 +153,7 @@ let renderTasks=(function(){
 
             const delBut=document.createElement('button')
                 delBut.classList.add('delete')
+                
                 delBut.addEventListener('click',()=>{
                     projects.deleteTask([j])
                 })
