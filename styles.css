@@ -31,7 +31,9 @@
     justify-content:space-around;
     flex-wrap:wrap;
     width:80%;
-    height:20px
+    min-height:20px;
+    /* overflow:hidden;
+    float:left; */
 }
 
 .project:hover{
@@ -43,21 +45,23 @@
     border-radius:25px;
     height:30px;
     width:30px;
+    margin-bottom:10px;
 }
 
 
 #todoSide{
     height:100%;
-    width:max(300px,80%)
+    width:max(300px,50%);
+    margin-left:80px;
 
 }
 
 .delete{
     border-radius:25px;
-    height:100%;
+    height:20px;
     width:30px;
     font-size:100%;
-    background:url('./images/delete.svg');
+    background-image:url('./images/delete.svg');
     background-color:lightgrey
 }
 
@@ -79,10 +83,10 @@
 .task{
     display:flex;
     flex-direction:column;
-    align-items:space-between;
+    align-items:space-around;
     width:100%;
     height:50px;
-    font-size:20px;
+    font-size:15px;
     background-color:white
 }
 
@@ -99,13 +103,20 @@
 
 .task:focus{
 
-    height:100px
+    height:90px
 }
 
 .task:focus>.descrip{
-    max-height:100px;
+    max-height:90px;
     margin-top:15px;
-    font-size:75%
+    font-size:100%
+}
+
+.status-button{
+    border-radius:25px;
+    width:30px;
+    height:25px;
+    background-image:url('./images/check.svg')
 }
 
 ::backdrop{
