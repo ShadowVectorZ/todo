@@ -1,29 +1,36 @@
-/* *{
-    border:1px solid black
-} */
+*{
+    
+}
 
+html,body{
+    height:100%;
+    width:100%;
+}
 
 
 #container{
-    height:100%;
+    min-height:100%;
     display:flex;
     
-    width:100%
+    width:100%;
+    background-color:rgba(255, 93, 255, 0.479);
     }
 
 
 #projectSide{
-    height:100%;
-    width:min(300px,50%)
+    min-height:100%;
+    width:min(300px,50%);
+    padding-left:30px;
+    background-color:purple
+    
 }
 #projects{
-    height:100%;
     width:100%;
     display:flex;
     flex-wrap:wrap;
     align-items:center;
     flex-direction:column;
-    gap:10px
+    gap:10px;
     }
 
 .project{
@@ -32,8 +39,11 @@
     flex-wrap:wrap;
     width:80%;
     min-height:20px;
-    /* overflow:hidden;
-    float:left; */
+    overflow:hidden;
+}
+
+.projectName{
+    width:70%;
 }
 
 .project:hover{
@@ -50,10 +60,9 @@
 
 
 #todoSide{
-    height:100%;
+    min-height:100%;
     width:max(300px,50%);
-    margin-left:80px;
-
+    margin-left:110px;
 }
 
 .delete{
@@ -72,12 +81,11 @@
 
 
 #tasks{
-    height:100%;
     width:100%;
     display:flex;
     flex-wrap:wrap;
     flex-direction:column;
-    gap:10px
+    gap:15px;
 }
 
 .task{
@@ -85,7 +93,7 @@
     flex-direction:column;
     align-items:space-around;
     width:100%;
-    height:50px;
+    min-height:50px;
     font-size:15px;
     background-color:white
 }
@@ -102,14 +110,16 @@
 }
 
 .task:focus{
-
-    height:90px
+    max-height:90px;
+    overflow-y:auto
+    
 }
 
 .task:focus>.descrip{
     max-height:90px;
     margin-top:15px;
-    font-size:100%
+    font-size:90%;
+    overflow-y:auto
 }
 
 .status-button{
