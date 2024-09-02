@@ -70,7 +70,10 @@ let renderProjects=(function(){
             for(let i=0;i<array.length;i++){
                 const project=document.createElement('button')
                 project.classList.add('project')
-                project.textContent=`${projects.allProjects[i].title}`
+                const projectName=document.createElement('div')
+                projectName.classList.add('projectName')
+                projectName.textContent=`${projects.allProjects[i].title}`
+                project.appendChild(projectName)
                 project.addEventListener('click',()=>{
                     projects.currentProject=projects.allProjects[i].newArray;
                     renderTasks.printList()
